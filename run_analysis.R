@@ -3,17 +3,6 @@ library(tidyverse)
 library(data.table)
 
 
-###############FUNCTIONS USED IN THE file########################
-## 1. download.data -  download the data file for UCI HAR dataset  
-##                     if it doesnt exist on the local hard drive 
-## 2. readFeatures -   read features in the observation set for   
-##                     train and test
-## 3. readActivtities- read activity in the observation set for   
-##                     train and test
-## 4. readSubjects   - read subjects in the observation set for   
-##                     train and test
-#################################################################
-
 ##download data from internet  
 download.data <- function (filename) {
             if (!file.exists(file.path("./data")))
@@ -24,7 +13,7 @@ download.data <- function (filename) {
             }
 }
 
-##read both train and test activties from the directory  
+##read both train and test activities from the directory  
 readFeatures <- function() {
             trainFeatures <<- read.table(file.path(directorypath,"train", "X_train.txt" ), 
                                          header = FALSE,
@@ -64,17 +53,16 @@ readSubjects <- function() {
 readLabels <- function() {
             ##Activity labels  
             activityLabels <<- read.table(file.path(directorypath,"activity_labels.txt" ), 
-                                         header = ,
-                                         col.names = c("actcode", "activityname"))
+                                          header = ,
+                                          col.names = c("actcode", "activityname"))
             ##Feature Labels
             featureLabels <<- read.table(file.path(directorypath,"features.txt" ), 
                                          header = FALSE,
                                          col.names = c("featurecode", "featurename"))            
 }
 
+########## CODE FOR ACTIONS AS PER PROJECT REQUIREMENTS #########
 
-
-########## SET DIR PATH AND FILE NAME ###########################
 fileurl<- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 directorypath <- "./data/UCI HAR Dataset" 
 
@@ -102,7 +90,7 @@ dataMerged <- cbind(dataSubjects, dataActivity, dataFeatures)
 
 ########### SELECT ONLY MEAN & SD COLUMNS ########################
 meanSDCols <- featureLabels$featurename[grep("mean\\(\\)|std\\(\\)", 
-                                    featureLabels$featurename)]
+                                             featureLabels$featurename)]
 
 tidyData <- select(dataMerged, subject, actcode, as.character(meanSDCols))
 
@@ -132,7 +120,7 @@ finalData <- tidyData %>%
 write.table(finalData,"FinalAveragesData.txt")
 
 
-            
+
 
 
 
