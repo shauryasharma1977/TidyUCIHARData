@@ -1,6 +1,6 @@
 run_analysis.R script is the script which performs the 5 actions asked for in the "Getting and Cleaning Data Course Project". 
 
-STRUCTURE
+STRUCTURE OF FILE
 The file contains 4 functions, followed by the script which executes the 5 actions required by the assignment. The functions are meant to make the code more readable. These functions use globally scoped variables for data tables
 
 
