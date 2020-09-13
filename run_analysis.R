@@ -15,14 +15,14 @@ library(data.table)
 #################################################################
 
 ##download data from internet  
-download.data <- function (filename)
-            if (!file.exists(directorypath))
+download.data <- function (filename) {
+            if (!file.exists(file.path("./data")))
             {
-                        download.file(fileurl, directorypath)
-                        file.create(directorypath)
+                        dir.create("./data")
+                        download.file(fileurl, filename)
                         unzip(filename, exdir="./data")            
             }
-
+}
 
 ##read both train and test activties from the directory  
 readFeatures <- function() {
@@ -77,7 +77,6 @@ readLabels <- function() {
 ########## SET DIR PATH AND FILE NAME ###########################
 fileurl<- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 directorypath <- "./data/UCI HAR Dataset" 
-datazipfilename <- "UCIHARDataset.zip"
 
 
 ########## DOWNLOAD UCI HAR DATA, UNZIP #########################
