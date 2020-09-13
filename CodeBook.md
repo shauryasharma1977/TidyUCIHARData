@@ -64,6 +64,10 @@ Assign intuitive & descriptive names to variables of the dataset which are human
 	- "tBody" with "TimeBody"
 
 #STEP 7
-Calculate the mean of the observations. For this, group the data by activity and subject and use the summarize function for all the columns other than the grouped columns. This dataset is called "finalData". Save the data table in the "FinalAveragesData.txt" file.
+Calculate the mean of the observations. For this, group the data by activity and subject and use the summarize function for all the columns other than the grouped columns. 
+This dataset is called "finalData". [ROWS=180, COLUMNS=68]
+
+#STEP 8
+Save the data table in the "FinalAveragesData.txt" file. 
 
 

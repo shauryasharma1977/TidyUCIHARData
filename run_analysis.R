@@ -95,16 +95,14 @@ readSubjects()
 
 ########### MERGE TRAIN & TEST DATA #############################
 dataFeatures <- rbind.data.frame(trainFeatures, testFeatures)
-##names(dataFeatures) <- featureLabels$featureneNames
-
-            dataActivity <- rbind.data.frame(trainActivties, testActivities)
+dataActivity <- rbind.data.frame(trainActivties, testActivities)
 dataSubjects <- rbind.data.frame(trainSubjects, testSubjects)
 
 ##Merge into single dataset
 dataMerged <- cbind(dataSubjects, dataActivity, dataFeatures)
 
 ########### SELECT ONLY MEAN & SD COLUMNS ########################
-meanSDCols <- featureLabels$featurename[grep("mean()|std()", 
+meanSDCols <- featureLabels$featurename[grep("mean\\(\\)|std\\(\\)", 
                                     featureLabels$featurename)]
 
 tidyData <- select(dataMerged, subject, actcode, as.character(meanSDCols))
@@ -131,6 +129,7 @@ finalData <- tidyData %>%
             group_by(subject, activity) %>%
             summarise(across(everything(),mean))
 
+########### Write to a text table ################################
 write.table(finalData,"FinalAveragesData.txt")
 
 
