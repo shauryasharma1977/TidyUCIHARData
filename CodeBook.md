@@ -19,21 +19,29 @@ STEP#2
 Load data into R variables for feature names, activity labels & observation data (activity, subject and feature)
 
 1. activityLabels = Activity labels (code and description) in ./activity_labels.text file. These are the activities done by each subject. [ROWS=6, COLS=2, column names = actcode, activityname]
+
 2. featureneNames = Feature specification of 561 columns from accelerometer and gyroscope from the ./features.txt. These are the features recorded in the observations data. [ROWS=561, COLS=2, column names = featurecode, featurename]
+
 3. trainSubjects  = Subjects Observation data set contained in ./Train/subject_train.text file [ROWS=7352, COLS=1, column name = subject]
+
 4. testSubjects   = Subjects Observation data set contained in ./Test/subject_test.text file [ROWS=2947, COLS=1, column name = subject]
+
 5. trainActivties = Activity Observation data set contained in ./Train/X_Train.text file [ROWS=7352, COLS=1, column name = actcode]
+
 6. testActivties  = Activity Observation data set contained in ./Test/y_test.text file [ROWS=2947, COLS=1, column name = actcode]
-trainFeatures  = features Observation data set contained in ./Test/X_train.text file [ROWS=7352, COLS=561, column names = 1-561 features of features.text file]
+
+7. trainFeatures  = features Observation data set contained in ./Test/X_train.text file [ROWS=7352, COLS=561, column names = 1-561 
+
+8. features of features.text file]
 testFeatures   = features Observation data set contained in ./Test/X_Test.text file [ROWS=2947, COLS=561, column names = 1-561 features of features.text file]
 
 
 #STEP 3
 Create one data set which combines all observations data by combining corresponding train & test data sets
-	1. Combine feature observations data of train and test into variable data set "dataFeatures" (use rbind to bind rows)
-	2. Combine Subject observations data of train and test data into variable data set "dataSubjects" (use rbind to bind rows)
-	3. Combine activity observations data of train and test data into variable data set "dataActivity" (use rbind to bind rows)
-	4. Finally, combine all into one dataset called "dataMerged" which contains all the data that is required to be bound together. (use cbind to bind columns)
+1. Combine feature observations data of train and test into variable data set "dataFeatures" (use rbind to bind rows)
+2. Combine Subject observations data of train and test data into variable data set "dataSubjects" (use rbind to bind rows)
+3. Combine activity observations data of train and test data into variable data set "dataActivity" (use rbind to bind rows)
+4. Finally, combine all into one dataset called "dataMerged" which contains all the data that is required to be bound together. (use cbind to bind columns)
 
 #STEP 4
 Subset "dataMerged" to contain only "activity", subject and "features observation data comtaining mean and standard deviation". 
@@ -49,19 +57,19 @@ Substitute variable actcode in merged data with Activity names and rename the va
 #STEP 6
 Assign intuitive & descriptive names to variables of the dataset which are human readable. Use gsub to find specific key words and replace with more informed text.
 
--Change "-mean" to ":Mean"
--Change hyphenated "-std" to ":STD"
--Change all Hyphens to semicolons
--Rename short words with human understandable text 
-	- "Acc" to "Accelerometer"
-	- "t" with time 
-	- "freq" with Frequency etc
-	- "Gyro" with "Gyroscope"
-	- "BodyBody" with "Body"
-	- "Mag" with "Magnitude"
-	- "t" with "Time" when "t" is first letter of the feature name
-	- "f" with "Frequency" when "f" is first letter of the feature name
-	- "tBody" with "TimeBody"
+a) Change "-mean" to ":Mean"
+b) Change hyphenated "-std" to ":STD"
+c) Change all Hyphens to semicolons
+d) Rename short words with human understandable text 
+            i)    "Acc" to "Accelerometer"
+            ii)   "t" with time 
+            iii)  "freq" with Frequency etc
+	iv)   "Gyro" with "Gyroscope"
+	v)    "BodyBody" with "Body"
+	vi)   "Mag" with "Magnitude"
+	vii)  "t" with "Time" when "t" is first letter of the feature name
+	viii) "f" with "Frequency" when "f" is first letter of the feature name
+	ix)   "tBody" with "TimeBody"
 
 #STEP 7
 Calculate the mean of the observations. For this, group the data by activity and subject and use the summarize function for all the columns other than the grouped columns. 
