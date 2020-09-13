@@ -1,6 +1,6 @@
 run_analysis.R script is the script which performs the 5 actions asked for in the "Getting and Cleaning Data Course Project". 
 
-STRUCTURE
+STRUCTURE OF FILE
 The file contains 4 functions, followed by the script which executes the 5 actions required by the assignment. The functions are meant to make the code more readable. These functions use globally scoped variables for data tables
 
 
@@ -29,7 +29,7 @@ Load data into R variables for feature names, activity labels & observation data
 5. trainActivties = Activity Observation data set contained in ./Train/X_Train.text file [ROWS=7352, COLS=1, column name = actcode]
 
 6. testActivties  = Activity Observation data set contained in ./Test/y_test.text file [ROWS=2947, COLS=1, column name = actcode]
-
+ 
 7. trainFeatures  = features Observation data set contained in ./Test/X_train.text file [ROWS=7352, COLS=561, column names = 1-561 
 
 8. features of features.text file]
